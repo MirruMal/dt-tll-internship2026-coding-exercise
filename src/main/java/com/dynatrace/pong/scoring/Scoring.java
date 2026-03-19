@@ -1,13 +1,15 @@
 package com.dynatrace.pong.scoring;
 import com.dynatrace.pong.model.Player;
 
+//I used
+
 public class Scoring {
     private int player1Score;
     private int player2Score;
     private Player player1;
     private Player player2;
 
-    public Scoring(){
+    public Scoring(Player player1, Player player2) {
         player1Score = 0;
         player2Score = 0;
         this.player1 = player1;
@@ -45,15 +47,15 @@ public class Scoring {
         this.player2Score = player2Score;
     }
 
-    public String getWinner(int player1Score, int player2Score){
+    public String getWinner(){
         if (isGameOver()){
             if (player1Score > player2Score+1 && player1Score >= 11){
                 //System.out.println("Player 1 wins");
-                return player1Name;
+                return player1.getFirstName() + " "+ player1.getLastName();
             }
             if (player2Score > player1Score+1 && player2Score >= 11){
                 //System.out.println("Player 2 wins");
-                return player2Name;
+                return player2.getFirstName() +" "+ player2.getLastName();
             }
 
         }
@@ -66,7 +68,7 @@ public class Scoring {
     }
 
     public int Player2Scored(){
-        setPlayer1Score(player2Score+1);
+        setPlayer2Score(player2Score+1);
         return player2Score;
     }
 
